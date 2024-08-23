@@ -1,0 +1,49 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Sale {
+  amount    Float?
+  car       Car?      @relation(fields: [carId], references: [id])
+  carId     String?
+  client    Client?   @relation(fields: [clientId], references: [id])
+  clientId  String?
+  createdAt DateTime  @default(now())
+  date      DateTime?
+  id        String    @id @default(cuid())
+  updatedAt DateTime  @updatedAt
+}
+
+model Setting {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  key       String?
+  updatedAt DateTime @updatedAt
+  value     String?
+}
+
+model Car {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  make      String?
+  model     String?
+  price     Float?
+  sales     Sale[]
+  updatedAt DateTime @updatedAt
+  year      Int?
+}
+
+model Client {
+  createdAt   DateTime @default(now())
+  email       String?
+  id          String   @id @default(cuid())
+  name        String?
+  phoneNumber String?
+  sales       Sale[]
+  updatedAt   DateTime @updatedAt
+}
