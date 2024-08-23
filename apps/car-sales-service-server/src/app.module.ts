@@ -6,6 +6,7 @@ import { SaleModule } from "./sale/sale.module";
 import { SettingModule } from "./setting/setting.module";
 import { CarModule } from "./car/car.module";
 import { ClientModule } from "./client/client.module";
+import { NotificationModule } from "./notification/notification.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
@@ -23,6 +24,7 @@ import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
     SettingModule,
     CarModule,
     ClientModule,
+    NotificationModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,
